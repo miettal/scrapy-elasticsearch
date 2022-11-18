@@ -68,10 +68,6 @@ class ElasticSearchPipeline(object):
 
         vers = cls._get_version(es)
 
-        # Require only if version is less than 6.2.d.
-        if vers.major < 6 or (vers.major == 6 and vers.minor < 2):
-            require_setting('ELASTICSEARCH_TYPE', vers)
-
     @classmethod
     def init_es_client(cls, crawler_settings):
         auth_type = crawler_settings.get('ELASTICSEARCH_AUTH')
@@ -157,10 +153,6 @@ class ElasticSearchPipeline(object):
             '_index': index_name,
             '_source': dict(item)
         }
-
-        # The ES roadmap migrates to a typeless API with ES 7 and later.
-        if 'ELASTICSEARCH_TYPE' in self.settings:
-            index_action['_type'] = self.settings['ELASTICSEARCH_TYPE']
 
         if self.settings['ELASTICSEARCH_UNIQ_KEY'] is not None:
             item_id = self.get_id(item)

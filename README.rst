@@ -22,7 +22,6 @@ Usage (Configure settings.py:)
    ELASTICSEARCH_SERVERS = ['localhost']
    ELASTICSEARCH_INDEX = 'scrapy'
    ELASTICSEARCH_INDEX_DATE_FORMAT = '%Y-%m'
-   ELASTICSEARCH_TYPE = 'items'
    ELASTICSEARCH_UNIQ_KEY = 'url'  # Custom unique key
 
    # can also accept a list of fields if need a composite key
@@ -41,7 +40,6 @@ Available parameters (in settings.py)
 
    ELASTICSEARCH_INDEX - elastic search index
    ELASTICSEARCH_INDEX_DATE_FORMAT - the format for date suffix for the index, see python datetime.strftime for format. Default is no date suffix.
-   ELASTICSEARCH_TYPE - elastic search type
    ELASTICSEARCH_UNIQ_KEY - optional field, unique key in string (must be a field or a list declared in model, see items.py)
    ELASTICSEARCH_BUFFER_LENGTH - optional field, number of items to be processed during each bulk insertion to Elasticsearch. Default size is 500.
    ELASTICSEARCH_AUTH  - optional field, set to 'NTLM' to use NTLM authentification
